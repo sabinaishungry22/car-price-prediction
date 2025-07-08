@@ -52,10 +52,8 @@ def scrape_pages(pages=5):
             print(f"Error fetching page {page}: {e}")
             continue
     
-    # Convert to DataFrame
     df = pd.DataFrame(all_data)
     
-    # Clean price column
     df['price_clean'] = df['price'].str.replace(r'[^\d]', '', regex=True)
     df['price_clean'] = pd.to_numeric(df['price_clean'], errors='coerce')
     
@@ -65,4 +63,4 @@ def scrape_pages(pages=5):
     print(f"\nSuccess! Saved {len(df)} cars to result/all_cars.csv")
 
 if __name__ == '__main__':
-    scrape_pages(pages=5)  # Change this number if needed
+    scrape_pages(pages=5)
